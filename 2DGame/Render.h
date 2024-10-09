@@ -47,15 +47,22 @@ class Render
 		}
 
 		hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		csbi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
-		GetConsoleScreenBufferInfoEx(hConsole, &csbi);
+		if (hConsole != INVALID_HANDLE_VALUE) {
+			CONSOLE_FONT_INFOEX cfi;
+			cfi.cbSize = sizeof(cfi);
+			cfi.nFont = 1;
+			cfi.dwFontSize.X = 3;     // Width of each character in the font 
+			cfi.dwFontSize.Y = 3;     // Height 
+			cfi.FontFamily = FF_DONTCARE;
+			cfi.FontWeight = FW_NORMAL;
+			wcscpy_s(cfi.FaceName, L"SquarePix3"); // Choose your font 
+			SetCurrentConsoleFontEx(hConsole, FALSE, &cfi);
+		}
 		
 		Resources::LoadSprites("path_to_sprite_file");
 		Resources::LoadAtlas("test_cmp.cmp");
-		
 
 		Texture2D* cmp = Resources::atlases[0].texture;
-
 
 		for (int i = 0; i < 16; i++)
 			csbi.ColorTable[i] = RGB(colors[i].r, colors[i].g, colors[i].b);
