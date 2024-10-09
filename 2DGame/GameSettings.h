@@ -1,0 +1,1 @@
+#define CELL_SPRITE_SIZE 24
