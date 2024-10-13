@@ -34,15 +34,15 @@ int main(int argvc, char const *argv[])
 
 	Texture2D* cmp = Resources::atlases[0].texture;
 
-	//Sprite* s = new Sprite(141, &Resources::atlases[0]);
-	//GameObject obj {s, 0, 0 };
+
 	Player player{};
 	game.player = &player;
+	Camera cam{ 320, 256 };
+	cam.transform.SetParent(player.transform);
+	
 
 	PickableObject heart{};
 	heart.TransportTo(30, 30);
-
-	Camera cam {320, 256};
 
 	Tilemap map{Vector2Int(30, 30)};
 
@@ -70,7 +70,7 @@ int main(int argvc, char const *argv[])
 		Render::ConsoleDraw(cam.GetRender(), 0, 0);
 		Render::ConsoleOutput();
 
-		
+		/*
 		if (Inputs::isPresed(87)) {
 			cam.position.y -= step;
 		}
@@ -82,7 +82,7 @@ int main(int argvc, char const *argv[])
 		}
 		if (Inputs::isPresed(68)) {
 			cam.position.x += step;
-		}
+		}*/
 
 
 		if (Inputs::isClick(VK_ESCAPE)) {

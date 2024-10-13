@@ -15,11 +15,18 @@ public:
 };
 struct Vector2Int
 {
+
 public:
-	int16_t x;
-	int16_t y;
+	int16_t x = 0;
+	int16_t y = 0;
+
 	Vector2Int() {}
 	Vector2Int(int16_t x, int16_t y) : x(x), y(y) { }
+
+	void Trandform(int16_t dx, int16_t dy) {
+		x += dx;
+		y += dy;
+	}
 	int16_t Len() {
 		return x * y;
 	}

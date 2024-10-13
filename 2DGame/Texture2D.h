@@ -1,7 +1,9 @@
 #pragma once
+#ifndef TEXTURE2D_H
+#define TEXTURE2D_H
+
 #include <iostream>
 #include <fstream>
-
 
 struct CMPHeader {
     uint16_t file_type{ 0x4D43 };          // File type always CM which is 0x4D43
@@ -53,4 +55,6 @@ private:
         }
     }
 };
+
+#endif
 

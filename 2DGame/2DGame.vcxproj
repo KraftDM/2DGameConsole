@@ -39,6 +39,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Structures.h" />
     <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />

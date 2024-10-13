@@ -1,22 +1,33 @@
 #pragma once
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
 
 #include "Sprite.h"
+#include "Transform.h"
 
 class GameObject
 {
 public:
-	Vector2Int position{ 0, 0 };
-	short zIndex = 0;
+	Transform transform;
+	short zIndex = 0; // переделать на ссылку на слой (tilemap*)
 	Sprite* sprite = nullptr;
 
 public:
-	GameObject() {};
-	GameObject(int16_t x, int16_t y) : position(Vector2Int(x, y)) {}
-	GameObject(Sprite* sprite, int16_t x, int16_t y) : sprite(sprite), position(Vector2Int(x, y)) {};
+	GameObject() {
+		transform = {};
+		transform.gameobject = this;
+	}
+	GameObject(int16_t x, int16_t y) : transform(x, y) {}
+	GameObject(Sprite* sprite, int16_t x, int16_t y) : sprite(sprite), transform(x, y) {};
 	void TransportTo() {
-		position = Vector2Int((short)rand() % 250-115, (short)rand() % 200-100);
+		transform.position = Vector2Int((short)rand() % 250-115, (short)rand() % 200-100);
 	}
 	void TransportTo(int16_t x, int16_t y) {
-		position = Vector2Int(x, y);
+		transform.position = Vector2Int(x, y);
+	}
+	void SetParent() {
+		
 	}
 };
+
+#endif

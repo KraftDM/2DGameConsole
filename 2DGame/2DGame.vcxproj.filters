@@ -24,13 +24,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameSettings.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="Level.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Resources.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
@@ -47,12 +41,6 @@
     </ClInclude>
     <ClInclude Include="Render.h">
       <Filter>Graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="Structures.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>GameEngine</Filter>
@@ -82,6 +70,21 @@
       <Filter>GameEngine</Filter>
     </ClInclude>
     <ClInclude Include="EventPosition.h">
+      <Filter>GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Structures.h">
+      <Filter>GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
       <Filter>GameEngine</Filter>
     </ClInclude>
   </ItemGroup>
