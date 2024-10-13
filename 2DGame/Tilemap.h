@@ -11,17 +11,20 @@ struct TileBase {
 class Tilemap
 {
 	int tileCount;
-	Vector2Int worldOffset {-10, -8};
+	Vector2Int worldOffset;
+	Vector2Int size;
 	Vector2Int* positions;
 	TileBase* tileArray;
 	short zIndex;
+
 
 public:
 	Grid* grid;
 
 public:
-	Tilemap(Vector2Int size = {20, 16}, short zIndex = 0) : zIndex(zIndex) {
+	Tilemap(Vector2Int size = {256, 256}, short zIndex = 0) : size(size), zIndex(zIndex) {
 		tileCount = size.x * size.y;
+		worldOffset = { -size.x/2, -size.y/2 };
 		positions = new Vector2Int[tileCount];
 		tileArray = new TileBase[tileCount];
 
@@ -42,22 +45,17 @@ public:
 		}
 	}
 	void SetTileSprite(Sprite* sprite, Vector2Int pos) {
-		int i = 0;
-		while (i < tileCount) {
-			if (positions[i] == pos) {
-				tileArray[i].sprite = sprite;
-				return;
-			}
-			i++;
-		}
+		int index = pos.y * size.x + pos.x;
+		if (index >= 0 && index < tileCount)
+			tileArray[index].sprite = sprite;
 	}
 
 	TileBase* GetTile(int x, int y) {
-		int i = 0;
-		while (i < tileCount) {
-			if(positions[i++] == Vector2Int(x - worldOffset.x, y - worldOffset.y))
-				return &tileArray[i - 1];
-		}
+		if (x - worldOffset.x >= size.x || x - worldOffset.x < 0)
+			return nullptr;
+		int index = (y - worldOffset.y) * size.x + x - worldOffset.x;
+		if(index >= 0 && index < tileCount)
+			return &tileArray[index];
 		return nullptr;
 	}
 

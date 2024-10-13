@@ -91,18 +91,6 @@ class Render
 			chiBuffer[i].Attributes = (WORD)0 << 4;
 		}
 
-		/*
-		for (int y = 0; y < coordBufSize.Y; y++) {
-			for (int x = 0; x < coordBufSize.X; x++) {
-				int i = y * coordBufSize.X + x;
-				chiBuffer[i].Char.UnicodeChar = ' ';
-				if (x < reg.second.x && x >= reg.first.x && y < reg.second.y && y >= reg.first.y)
-					chiBuffer[i].Attributes = (WORD)cmp->data[i] << 4;
-				else
-					chiBuffer[i].Attributes = (WORD)0 << 4;
-			}
-		}*/
-
 		ConsoleOutput();
 	}
 

@@ -1,4 +1,4 @@
-﻿  Render.cpp
+﻿  Camera.cpp
 E:\VSC\2DGame\2DGame\Structures.h(27,14): warning C4244: return: преобразование "double" в "int16_t", возможна потеря данных
   main.cpp
 E:\VSC\2DGame\2DGame\Structures.h(27,14): warning C4244: return: преобразование "double" в "int16_t", возможна потеря данных

@@ -31,19 +31,21 @@ public:
 
 	Bounds GetViewGridPosBounds(Grid* grid, Vector2Int offset = {0 ,0 }) {
 		Bounds res = Bounds();
-		res.min.x = position.x / grid->sizeX - tileColOffset;
-		res.min.y = position.y / grid->sizeY - tileLineOffset;
+		res.min.x = position.x / grid->sizeX - tileColOffset  + offset.x;
+		res.min.y = position.y / grid->sizeY - tileLineOffset + offset.y;
 
-		res.max.x = position.x / grid->sizeX + tileColOffset;
-		res.max.y = position.y / grid->sizeY + tileLineOffset;
+		res.max.x = position.x / grid->sizeX + tileColOffset  + (position.x % grid->sizeX > 0 ? 1 : 0);
+		res.max.y = position.y / grid->sizeY + tileLineOffset + (position.y % grid->sizeY > 0 ? 1 : 0);
 
 		return res;
 	}
 
 	void RenderTileMap(Tilemap &map) {
-		Bounds b = GetViewGridPosBounds(map.grid);
+		int yoffset = (position.y % grid->sizeY < 0 ? -1 : 0);
+		int xoffset = (position.x % grid->sizeX < 0 ? -1 : 0);
+		Bounds b = GetViewGridPosBounds(map.grid, Vector2Int(xoffset, yoffset));
 		Texture2D* render = RenderTiles::Render(map, b);
-		view->TextureDraw(render, - position.x % map.grid->sizeX, -position.y % map.grid->sizeX);
+		view->TextureDraw(render, grid->sizeX*xoffset - position.x % map.grid->sizeX, grid->sizeY * yoffset - position.y % map.grid->sizeY);
 		delete(render);
 	}
 

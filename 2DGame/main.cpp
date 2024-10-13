@@ -44,10 +44,10 @@ int main(int argvc, char const *argv[])
 
 	Camera cam {320, 256};
 
-	Tilemap map{};
-	for (int y = 0; y < 16; y++) {
-		for (int x = 0; x < 20; x++) {
-			//Sprite* s = new Sprite(y*20 + x, &Resources::atlases[0]);
+	Tilemap map{Vector2Int(30, 30)};
+
+	for (int y = 0; y < 30; y++) {
+		for (int x = 0; x < 30; x++) {
 			Sprite* s = new Sprite(y*x%4, &Resources::atlases[0]);
 			map.SetTileSprite(s, Vector2Int(x, y));
 		}
